@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from "react-redux"; 
 import history from "../../history";
 
-import { displayArticle, deleteArticle } from "../../actions";
+import { fetchArticle, deleteArticle } from "../../actions";
+import Loading from "../Loading";
 
 class DeleteArticle extends React.Component {
 
   componentDidMount() {
     this.id = this.props.params.id;
-    this.props.displayArticle(this.id);
+    this.props.fetchArticle(this.id);
   }
 
   onCancelDelete = (articleId) => {
@@ -34,9 +35,9 @@ class DeleteArticle extends React.Component {
     }
     else{
       return(
-        <div>
-          Loading...
-        </div>
+        <React.Fragment>
+          <Loading />
+        </React.Fragment>
       );
     }
   }
@@ -56,5 +57,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-  displayArticle, deleteArticle
+  fetchArticle, deleteArticle
 })(DeleteArticle);

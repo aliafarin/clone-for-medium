@@ -1,15 +1,19 @@
 import React from 'react';
 import { connect } from "react-redux";
+import $ from "jquery";
 
 import "../Styles.css";
 import Form from "../Form";
-import { displayArticle, updateArticle } from "../../actions";
+import { fetchArticle, updateArticle } from "../../actions";
+import Loading from "../Loading";
 
 class EditArticle extends React.Component {
 
   componentDidMount() {
     this.id = this.props.params.id;
-    this.props.displayArticle(this.id);
+    this.props.fetchArticle(this.id);
+    $("#writeEdit-indicator").text("Edit");
+    $("#writeEdit-indicator").css("margin-left", "0px");
   }
 
   onFormSubmit = (formValues) => {
@@ -34,9 +38,9 @@ class EditArticle extends React.Component {
     }
     else {
       return(
-        <div>
-          Loading ...
-        </div>
+        <React.Fragment>
+          <Loading />
+        </React.Fragment>
       );
     }
   }
@@ -48,5 +52,5 @@ const mapStateToProps = (state) => {
 }
 
 export default connect( mapStateToProps, {
-  displayArticle, updateArticle
+  fetchArticle, updateArticle
 } )(EditArticle);

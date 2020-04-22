@@ -2,13 +2,17 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
+import Loading from "./Loading";
+
 class PrivateRoute extends React.Component {
 
   renderRoute() {
 
     if( this.props.isSignedIn === null ) {
       return (
-        <div>Loading</div>
+        <React.Fragment>
+          <Loading />
+        </React.Fragment>
       );
     }
     

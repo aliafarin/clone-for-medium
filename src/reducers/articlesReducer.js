@@ -9,7 +9,7 @@ export default (state={}, action) => {
     case "LIST_ARTICLES":
       return { ...state, ..._.mapKeys(action.payload, "id") };
       
-    case "DISPLAY_ARTICLE":
+    case "FETCH_ARTICLE":
       return { ...state, [action.payload.id]: action.payload };
     
     case "UPDATE_ARTICLE":

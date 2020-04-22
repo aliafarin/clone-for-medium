@@ -4,12 +4,14 @@ import { connect } from "react-redux";
 import $ from "jquery";
 
 import "../Styles.css";
+import Loading from "../Loading";
 import { listArticles } from "../../actions";
 
 class ListArticles extends React.Component {
 
   componentDidMount() {
     this.props.listArticles();
+    $("#writeEdit-indicator").css("margin-left", "-100px");
   }
 
   onMouseEnterArticle = (e) => {
@@ -22,6 +24,7 @@ class ListArticles extends React.Component {
     $(".dark-overlay").css("opacity", "0");
   }
 
+  //fade the deleted article message
   fadeDeletedMessage = () => {
     $(".deletedA-m").css("opacity", "0")
     setTimeout( () => $(".deletedA-m").css("display", "none"), 10000 );
@@ -48,19 +51,19 @@ class ListArticles extends React.Component {
             key={article.id}
             className="article-item"
             onMouseLeave={this.onMouseLeaveArticle}>
-              <div
-               className="dark-overlay"
-               onMouseEnter={(e) => this.onMouseEnterArticle(e)}
-               onMouseOver={(e) => this.onMouseEnterArticle(e)}>
-                  <i className="huge arrow circle right icon"></i>
-              </div>
               <Link className="article-order" to={`/articles/${article.id}`}>
+                <div
+                className="dark-overlay"
+                onMouseEnter={(e) => this.onMouseEnterArticle(e)}
+                onMouseOver={(e) => this.onMouseEnterArticle(e)}>
+                    <i className="huge arrow circle right icon"></i>
+                </div>
                 <div className="article-info">
                   <div className="article-topic"><h4>{article.topic}</h4></div>
                   <div className="article-title"><h3>{article.title}</h3></div>
                   <div className="article-desc">{article.description}</div>
                   <div className="article-author"><h5>{article.authorName}</h5></div>
-                  <div className="article-date"><p>{article.date}</p></div>
+                  <div className="article-date"><p>{article.publishedAt}</p></div>
                 </div>
               </Link>
               <div className="article-img"><img src={require("./kristine-weilert-tLNRTxieD7k-unsplash.jpg")} /></div>
@@ -70,8 +73,11 @@ class ListArticles extends React.Component {
     }
 
     else {
-      //think of a decent loading page
-      return("loaing...");
+      return(
+        <React.Fragment>
+          <Loading />
+        </React.Fragment>
+      );
     }
   }
 

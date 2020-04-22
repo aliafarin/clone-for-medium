@@ -14,9 +14,11 @@ const NavBar = () => {
 
   return(
     <div className="navBar">
+      <span id="writeEdit-indicator">Write</span>
       <div className="nav-flex">
         <div className="brand">
           <h3>Medium</h3>
+          <i className="big medium icon"></i>
         </div>
         <div className="bars-icon" onClick ={navDown}><i className="large bars icon"></i></div>
       </div>
@@ -28,18 +30,19 @@ const NavBar = () => {
             </Link>
           </li>
           <li>
-            <Link to="#" className="">
-              lorem
+            <Link to="/articles">
+              Read
             </Link>
           </li>
           <li>
-            <Link to="#">
-              lorem
+            {/* change ( if signed in  ) */}
+            <Link to="/articles/create">
+              Write
             </Link>
           </li>
           <li>
-            <Link to="#">
-              lorem
+            <Link to="/">
+              Home
             </Link>
           </li>
         </ul>

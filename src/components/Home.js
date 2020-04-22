@@ -13,13 +13,14 @@ class Home extends React.Component {
 
   componentDidMount() {
     setInterval(() => this.changeSlide(), 5000);  
+    $("#writeEdit-indicator").css("margin-left", "-100px");
   }
 
-  componentDidUpdate() {
-    if(this.props.isSignedIn === true ) {
-      history.push("/articles");
-    }
-  }
+  // componentDidUpdate() {
+  //   if(this.props.isSignedIn === true ) {
+  //     history.push("/articles");
+  //   }
+  // }
 
   selectInterest = (e) => {
     //only add class of interest-selected if the target element id is null

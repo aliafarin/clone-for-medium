@@ -1,7 +1,5 @@
 import history from "../history";
-
 import JsonApi from "../JsonApi";
-import { formValues } from "redux-form";
 
 export const signIn = (userProfile) => {
   const userId = userProfile.getId();
@@ -22,22 +20,15 @@ export const signOut = () => {
   
 }
 
-export const createArticle = (article) => {
-  
-  //not sure this is the place for it
-  let monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"];
-  let date = new Date();
-  let year = date.getFullYear();
-  let month = monthNames[date.getMonth()];
-  let day = date.getDate();
+export const createArticle = (article, publishedAt) => {
   
   return async function(dispatch, getState) {
-    let { userId, userName } = getState().auth;
+    let { userId, userName, userImage } = getState().auth;
     let response = await JsonApi.post("/articles", { 
        authorId: userId,
        authorName: userName,
-       date: `${day} ${month}, ${year}`,
+       authorImage: userImage,
+       publishedAt: publishedAt,
        ...article }); 
 
     dispatch({
@@ -61,13 +52,12 @@ export const listArticles = () => {
 
 }
 
-//change this one's name
-export const displayArticle = (articleId) => {
+export const fetchArticle = (articleId) => {
   return async(dispatch) => {
     let response = await JsonApi.get(`/articles/${articleId}`);
 
     dispatch({
-      type: "DISPLAY_ARTICLE",
+      type: "FETCH_ARTICLE",
       payload: response.data
     });
   }

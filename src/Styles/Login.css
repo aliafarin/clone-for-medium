@@ -1,0 +1,13 @@
+#login {
+  min-height: 596px;
+  padding-top: 100px;
+  width: 200px;
+  margin: auto;
+  text-align: center;
+}
+
+.login-box {
+  border: solid 0.5px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.15);
+}

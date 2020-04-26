@@ -1,0 +1,285 @@
+#display-article {
+  padding: 100px 0 100px 0;
+}
+
+.articleD-item {
+  margin: auto;
+  max-width: 1000px;
+}
+
+.articleD-info {
+  max-width: 600px;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.articleD-title h1 {
+  text-transform: capitalize;
+  font-size: 2.5rem;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 20px;
+  margin-top: 12px;
+  overflow-wrap: break-word;
+}
+
+.articleD-title h4 {
+  display: inline-block;
+  text-transform: capitalize;
+  font-family: 'Vollkorn', serif;
+  font-size: 1.3rem;
+  padding: 5px;
+  border: solid 0.5px rgba(0, 0, 0, 0.05);
+  border-radius: 1rem;
+  background-color: var(--black-color);
+  color: var(--pure-white);
+}
+
+.articleD-desc h4 {
+  text-transform: capitalize;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  opacity: 0.54;
+  margin: 5px 0 5px 0;
+  overflow-wrap: break-word;
+}
+
+.articleD-date {
+  font-size: 1.3rem;
+  opacity: 0.54;
+}
+
+.articleD-author {
+  text-transform: capitalize;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.articleD-author a {
+  color: var(--pure-black);
+}
+
+.authorD-info {
+  padding: 5px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.authorD-info p {
+  font-size: 1.05rem;
+  opacity: 0.54;
+}
+
+.articleD-author img {
+  width: 50px;
+  height: 50px;
+  border-top: solid 1.2px var(--get-started-button-color);
+  border-bottom: solid 1.2px var(--get-started-button-color);
+  border-right: solid 0.5px var(--pure-white);
+  border-left: solid 0.5px var(--pure-white);
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.authorD-comm {
+  margin-left: auto;
+}
+
+.authorD-comm i {
+  margin-left: 3px;
+  color: var(--black-color);
+}
+
+i.facebook:hover {
+  transform: scale(2);
+  color: var(--facebook-blue);
+}
+
+i.twitter:hover {
+  transform: scale(2);
+  color: #38A1F3;
+}
+
+i.linkedin:hover {
+  transform: scale(2);
+  color: #0073b1;
+}
+
+.articleD-image {
+  text-align: center;
+  max-width: 600px;
+  margin: auto
+}
+
+.articleD-image img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.articleD-image p {
+  font-size: 1.3rem;
+  opacity: 0.54;
+}
+
+.articleD-content {
+  max-width: 600px;
+  text-align: justify;
+  margin: auto;
+  margin-top: 50px;
+  min-height: 200px;
+  font-size: 1.5rem;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  line-height: 2rem;
+  overflow-wrap: break-word;
+}
+
+.articleD-content::first-letter {
+  font-size: 3.5rem;
+}
+
+.like-icons {
+  display: flex;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 40px;
+  justify-content: space-between;
+}
+
+.notliked-article {
+  color:rgba(219, 40, 40, 0.5);
+  transition: all 0.5s;
+}
+
+/* wont work for small screens */
+/* .like-icons i.heart:hover {
+  color:rgba(219, 40, 40, 0.7);
+} */
+
+.like-article {
+  color:rgba(219, 40, 40, 1);
+}
+
+.editDelete-button {
+  display: flex;
+  flex-direction: column;
+}
+
+.editDelete-button .editD {
+  padding: 8px;
+  font-size: 1.2rem;
+  text-align: center;
+  border: solid 0.5px var(--edit-color);
+  border-radius: 0.2rem;
+  width: 100%;
+  margin: 5px;
+  color: var(--edit-color);
+}
+
+.editD:hover {
+  background-color: var(--edit-color);
+  color: var(--pure-white);
+}
+
+.editDelete-button .deleteD {
+  padding: 8px;
+  font-size: 1.2rem;
+  text-align: center;
+  border: solid 0.5px var(--delete-color);
+  border-radius: 0.2rem;
+  width: 100%;
+  margin: 5px;
+  color: var(--delete-color);
+}
+
+.deleteD:hover {
+  background-color: var(--delete-color);
+  color: var(--pure-white);
+}
+
+
+@media( max-width: 630px ) {
+
+  .articleD-info, .like-icons {
+    padding: 20px;
+    padding-top: 0;
+  }
+
+  .articleD-title h1 {
+    font-size: 2.3rem;
+  }
+  
+  .articleD-desc h4 {
+    font-size: 1.2rem;
+  }
+
+  .articleD-content {
+    padding: 0 20px 0 20px;
+  }
+
+  .articleD-date {
+    font-size: 1rem;
+  }
+
+  .articleD-author .authorD-comm {
+    display: none;
+  }
+
+  .editDelete-button {
+    flex-direction: column;
+    max-width: 500px;
+  }
+
+}
+
+div br {
+  display: none;
+}
+
+.ellipsis {
+  position: relative;
+}
+
+progress[value] {
+  display: none;
+  -webkit-appearance: none;
+  appearance: none;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  margin-left: -50vw;
+  width: 100vw;
+  height: 15px;
+}
+
+@media( max-width: 630px ) {
+  progress[value] {
+    width: 100vw;
+    margin-left: -50vw;
+  }
+}
+
+progress[value]::-webkit-progress-bar {
+  border-radius: 0.1rem;
+  background-color: white;
+  margin: auto;
+}
+
+progress[value]::-webkit-progress-value {
+  border-radius: 0.2rem; 
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+  background-color: var(--nice-green);
+}
+
+.menu-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+  right: 0;
+}
+
+.ellipsis:hover .menu-content {
+  display: block;
+}

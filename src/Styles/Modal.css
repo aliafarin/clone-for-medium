@@ -1,0 +1,115 @@
+.modal {
+  display: none;
+  position: fixed; 
+  z-index: 200; 
+  padding-top: 100px; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: var(--black-color);
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: var(--pure-white);
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 500px;
+  height: 400px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: var(--pure-black);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.auth {
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 10px;
+  color: var(--google-red);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--pure-white);
+  border: 0.5px solid var(--google-red);
+  border-radius: 0.1rem;
+}
+
+.auth:hover {
+  background-color: var(--google-red);
+  color: var(--pure-white);
+}
+
+.github-auth {
+  color: var(--pure-black);
+  border-color: var(--pure-black);
+}
+
+.github-auth:hover {
+  background-color: var(--pure-black);
+  color: var(--pure-white);
+}
+
+.facebook-auth {
+  color: var(--facebook-blue);
+  border-color: var(--facebook-blue);
+}
+
+.facebook-auth:hover {
+  background-color: var(--facebook-blue);
+  color: var(--pure-white);
+}
+
+.modal-form {
+  width: 80%;
+  margin-left: 35px;
+  padding: 15px;
+}
+
+.modal-form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 0.5px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.1rem;
+}
+
+.modal-form button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  border: solid 0.5px var(--black-color);
+  border-radius: 0.1rem;
+  color: var(--pure-white);
+  background-color: var(--black-color);
+}
+
+.modal-form button:hover {
+  opacity: 0.8;
+}
+
+
+@media( max-width: 640px ) {
+  .modal-content {
+    width: 330px;
+  }
+
+  .modal-form {
+    margin-left: 25px;
+  }
+}

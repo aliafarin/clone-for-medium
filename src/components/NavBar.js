@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import $ from "jquery";
 
-import "./Styles.css";
 import GoogleAuth from "./GoogleAuth";
 
 const NavBar = () => {
@@ -10,6 +9,7 @@ const NavBar = () => {
 
   let navDown = () => {
     $(".nav").toggleClass("nav-down");
+    $(".bars-icon").toggleClass("bars-icon-down");
   }
 
   return(

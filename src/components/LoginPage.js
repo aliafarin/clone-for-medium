@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 
 import history from "../history";
-import "./Styles.css";
 import GoogleAuth from "./GoogleAuth";
 
 class LoginPage extends React.Component {

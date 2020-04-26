@@ -1,7 +1,7 @@
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 
-import "./Styles.css";
+import "../Styles/index.css";
 import history from "../history";
 import PrivateRoute from "./PrivateRoute";
 import NavBar from "./NavBar";

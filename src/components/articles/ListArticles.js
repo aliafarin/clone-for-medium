@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import $ from "jquery";
 
-import "../Styles.css";
 import Loading from "../Loading";
 import { listArticles, listArticlesOnTopic } from "../../actions";
 
@@ -26,8 +25,7 @@ class ListArticles extends React.Component {
 
   //fade the deleted article message
   fadeDeletedMessage = () => {
-    $(".deletedA-m").css("opacity", "0")
-    setTimeout( () => $(".deletedA-m").css("display", "none"), 10000 );
+    setTimeout( () => $(".deletedA-m").css("display", "none"), 300000 );
   }
 
   //get appropriate articles on topic select

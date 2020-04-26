@@ -1,0 +1,134 @@
+.navBar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.nav-flex {
+  padding-right: 20%;
+  padding-left: 5%;
+}
+
+.brand {
+  color: var(--black-color);
+}
+
+.brand h3 {
+  font-size: 1.6rem;
+  font-family: 'Roboto Slab', serif;
+  margin: 0;
+}
+
+.brand i {
+  display: none;
+}
+
+.bars-icon {
+  display: none;
+  padding: auto;
+}
+
+.nav {
+  margin-right: 20%;
+}
+
+.nav li {
+  display: inline-block;
+  margin-right: 20px;
+  list-style-type: none;
+  font-size: 1.1rem;
+}
+
+.nav li a {
+  color: var(--black-color);
+}
+
+/* the indicators in Create/Edit page */
+#writeEdit-indicator {
+  font-size: 25px;
+  font-family: 'Merriweather', serif;
+  background-color: var(--black-color);
+  color: var(--pure-white);
+  border-radius: 0 0.2rem 0.2rem 0;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.10);
+  padding: 10px;
+  margin-left: -100px;
+  transition: all 1s ease; 
+}
+
+@media( max-width: 906px ) {
+
+  .nav {
+    margin-right: 5%;
+  }
+
+}
+
+@media( max-width: 740px ) {
+
+  .brand h3 {
+    display: none;
+  }
+
+  .brand i {
+    display: block;
+    transform: scale(1.8);
+  }
+
+}
+
+@media( max-width: 653px ) {
+  /* the indicators in Create/Edit page */
+  #writeEdit-indicator {
+    display: none;
+  }
+}
+
+@media( max-width: 540px ) {
+
+  .navBar {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .bars-icon{
+    display: block;
+    transform: scale(1.1);
+    transition: all 0.5s ease;
+  }
+
+  .bars-icon-down {
+    transform: rotate(90deg);
+  }
+
+  .nav-flex {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+  }
+
+  .nav {
+    display: none;
+    text-align: center;
+    width: 100%;
+  }
+
+  .nav li {
+    display: block;
+    padding: 10px;
+    border-bottom: solid 0.5px var(--black-color);
+    font-size: 1.2rem;
+  }
+}
+
+.nav-down {
+  display: block;
+}

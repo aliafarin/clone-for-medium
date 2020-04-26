@@ -1,7 +1,6 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
 
-import "./Styles.css";
 import EditorFieldComponent from "./EditorFieldComponent";
 import { Link } from "react-router-dom";
 
@@ -38,24 +37,25 @@ class Form extends React.Component {
     this.props.onSubmit(formValues);
   } 
 
+  //specify which buttons to be used
   renderFormButtons() {
     let buttonClassName;
     let cancelLink;
     let cancelName;
     if(this.props.button === "Publish") {
-      buttonClassName = "form-create";
+      buttonClassName = "publish-button";
       cancelLink = "/articles";
       cancelName = "Cancel"; 
     }
     else {
-      buttonClassName = "form-create form-edit";
+      buttonClassName = "publish-button edit-button";
       cancelLink = `/articles/${this.props.id}`;
       cancelName = "Discard Changes";
     }
     return(
       <React.Fragment>
         <button className={buttonClassName} type="submit" value="Submit">{this.props.button}</button>
-        <Link to={cancelLink}>
+        <Link className="cancel-button" to={cancelLink}>
           {cancelName}
         </Link>.
       </React.Fragment>  
@@ -68,7 +68,7 @@ class Form extends React.Component {
         <form onSubmit={this.props.handleSubmit(this.onSubmit)} autoComplete="off">
           <div className="g-container">
             <Field name="title" className="form-input" type="text" placeholder="Title" component={this.inputComponent} />
-            <Field name="topic" className="select" required component="select">
+            <Field name="topic" className="select-from-topics" required component="select">
               <option value="">Choose a Topic</option>
               <option value="Science">Science</option>
               <option value="Programming">Programming</option>

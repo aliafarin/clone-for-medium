@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import parser from "html-react-parser";
 import $ from "jquery";
 
-import "../Styles.css";
 import { fetchArticle } from "../../actions";
 import ProfileIcons from "../ProfileIcons";
 import Loading from "../Loading";
@@ -113,7 +112,7 @@ class DisplayArticle extends React.Component {
             <i
             onClick={this.onClickLike}
             onTransitionEnd={this.onTransitionEnd}
-            className="huge heart icon unlike-article"></i>
+            className="huge heart icon notliked-article"></i>
             <ProfileIcons authorId={article.authorId} userId={this.props.userId} articleId={article.id} />
           </div>
       </section>

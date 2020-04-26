@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from "jquery";
 
-import "./Styles.css";
-
 const Modal = (props) => {
 
   let closeModal = () => {
@@ -18,9 +16,17 @@ const Modal = (props) => {
     <div id="myModal" className="modal">
       <div className="modal-content">
         <span className="close" onClick={closeModal}>&times;</span>
-        <div className="google-auth" onClick={signIn}>
+        <div className="auth" onClick={signIn}>
           <i className="large google icon"></i>
-          <span>Google SignIn</span>
+          <span>SignIn with Google</span>
+        </div>
+        <div className="auth github-auth">
+          <i className="large github icon"></i>
+          <span>SignIn with github</span>
+        </div>
+        <div className="auth facebook-auth">
+          <i className="large facebook icon"></i>
+          <span>SignIn with facebook</span>
         </div>
         <form className="modal-form">
           <input type="email" placeholder="Email" />

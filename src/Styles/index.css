@@ -1,0 +1,24 @@
+:root {
+  --black-color:  rgba(0, 0, 0, 0.80);
+  --pure-black: rgb(0, 0, 0);
+  --pure-white: #ffff;
+  --get-started-button-color: rgb(2, 158, 116);
+  --facebook-blue: #4267b2;
+  --google-red: rgb(200, 4, 4);
+  --publish-color: royalblue;
+  --edit-color: #4CAF50;
+  --cancel-color: #db2828;
+  --delete-color: #f44336;
+  --nice-green: rgba(46, 112, 41, 1);
+}
+
+@import "./NavBar.css";
+@import "./Loading.css";
+@import "./Home.css";
+@import "./Footer.css";
+@import "./Modal.css";
+@import "./Login.css";
+@import "./Form.css";
+@import "./ListArticles.css";
+@import "./DisplayArticle.css";
+@import "./DeleteArticle.css";

@@ -3,9 +3,6 @@ import $ from "jquery";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import "./Styles.css";
-import history from "../history";
-
 class Home extends React.Component {
 
   state = { interests: [] };
@@ -15,12 +12,6 @@ class Home extends React.Component {
     setInterval(() => this.changeSlide(), 5000);  
     $("#writeEdit-indicator").css("margin-left", "-100px");
   }
-
-  // componentDidUpdate() {
-  //   if(this.props.isSignedIn === true ) {
-  //     history.push("/articles");
-  //   }
-  // }
 
   selectInterest = (e) => {
     //only add class of interest-selected if the target element id is null

@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from "react-redux";
 import $ from "jquery";
 
-import "../Styles.css";
 import Form from "../Form";
 import { createArticle } from "../../actions";
 

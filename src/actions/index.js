@@ -42,10 +42,22 @@ export const createArticle = (article, publishedAt) => {
 
 export const listArticles = () => {
   return async(dispatch) => {
-    let response = await JsonApi.get("/articles");
+    let response = await JsonApi.get(`/articles`);
 
     dispatch({
       type: "LIST_ARTICLES",
+      payload: response.data
+    });
+  }
+
+}
+
+export const listArticlesOnTopic = (artilceTopic) => {
+  return async(dispatch) => {
+    let response = await JsonApi.get(`/articles/?topic=${artilceTopic}`);
+
+    dispatch({
+      type: "LIST_ARTICLES_ON_TOPIC",
       payload: response.data
     });
   }

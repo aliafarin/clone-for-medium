@@ -12,8 +12,21 @@ import Loading from "../Loading";
 class DisplayArticle extends React.Component {
 
   componentDidMount() {
+    $("#writeEdit-indicator").css("margin-left", "-100px");
     this.id = this.props.params.id;
     this.props.fetchArticle(this.id);
+  }
+
+  //add scroll event listener when the state updates (the aticle is in state)
+  componentDidUpdate() {
+    window.addEventListener("scroll", this.onProgress);
+  }
+
+  getReadingTime = () => {
+    let articleWords = this.props.article[this.id].editor.split(" ");
+    let minutesToRead = Math.ceil(articleWords.length / 265);
+    
+    return minutesToRead;
   }
 
   onClickLike = (e) => {
@@ -23,6 +36,38 @@ class DisplayArticle extends React.Component {
 
   onTransitionEnd = (e) => {
     $(e.target).css("transform", "scale(1)");
+  }
+
+  //progress bar functionality
+  onProgress = () => {
+
+    let articleContent = document.getElementsByClassName("articleD-content")[0];
+    let coords = articleContent.getBoundingClientRect();
+    let top = coords.y;
+    let articleHeight = coords.height;
+    let windowHeight = document.documentElement.clientHeight;
+
+    //show progress bar when window reaches article content
+    if( (windowHeight + window.pageYOffset) > top ) {
+      $("progress").css("display", "block");
+      let currentProgress =  Math.floor((windowHeight - top) / articleHeight * 100);
+      $("progress").val(currentProgress);
+    }
+
+    //hide progress bar when window go back to the beginning of page 
+    else if( (windowHeight + window.pageYOffset) <= top) {
+      $("progress").css("display", "none");
+    }
+
+    //hide progress bar when window passes article content
+    if( windowHeight - coords.bottom - 200 > 0 ) {
+      $("progress").css("display", "none");
+    }
+  
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.onProgress);
   }
   
   renderArticle() {
@@ -35,11 +80,11 @@ class DisplayArticle extends React.Component {
           <div className="articleD-item">
             <div className="articleD-info">
               <div className="articleD-title">
-                <h4>{article.topic}</h4>
+                <span className="articleD-topic"><h4><i className="slack hash icon"></i>{article.topic}</h4></span>
                 <h1>{article.title}</h1>
               </div>
               <div className="articleD-date">
-                {article.publishedAt}
+                {article.publishedAt} 
               </div>
               <div className="articleD-desc">
                 <h4>{article.description}</h4>
@@ -50,7 +95,7 @@ class DisplayArticle extends React.Component {
                 <Link to="#">
                   <div className="authorD-info">
                     <div><h5>{article.authorName}</h5></div>
-                    <div><p>Joined December 9</p></div>
+                    <b><span style={{color: "rgba(46, 112, 41, 1)", fontSize: "15px"}}>{this.getReadingTime()} Minutes Read</span></b>
                   </div>
                 </Link>
                 <ProfileIcons authorId={article.authorId} userId={this.props.userId} articleId={article.id} />
@@ -87,6 +132,7 @@ class DisplayArticle extends React.Component {
     return(
       <React.Fragment>
         {this.renderArticle()}
+        <progress id="progress-bar" value="0" max="100"></progress>
       </React.Fragment>
     );
   }

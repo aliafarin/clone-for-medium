@@ -9,6 +9,10 @@ export default (state={}, action) => {
     case "LIST_ARTICLES":
       return { ...state, ..._.mapKeys(action.payload, "id") };
       
+    //not sure the state is correctly returned 
+    case "LIST_ARTICLES_ON_TOPIC": 
+      return { ..._.mapKeys(action.payload, "id") };
+      
     case "FETCH_ARTICLE":
       return { ...state, [action.payload.id]: action.payload };
     

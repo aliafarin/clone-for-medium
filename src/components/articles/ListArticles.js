@@ -5,7 +5,7 @@ import $ from "jquery";
 
 import "../Styles.css";
 import Loading from "../Loading";
-import { listArticles } from "../../actions";
+import { listArticles, listArticlesOnTopic } from "../../actions";
 
 class ListArticles extends React.Component {
 
@@ -28,6 +28,20 @@ class ListArticles extends React.Component {
   fadeDeletedMessage = () => {
     $(".deletedA-m").css("opacity", "0")
     setTimeout( () => $(".deletedA-m").css("display", "none"), 10000 );
+  }
+
+  //get appropriate articles on topic select
+  onTopicSelect = (e) => {
+    if(e.target.className === "topic-menu") {
+      $(".topic-select").removeClass("topic-select");
+      $(e.target).addClass("topic-select");
+      if($(e.target).text() === "All") {
+        this.props.listArticles();
+      }
+      else {
+        this.props.listArticlesOnTopic($(e.target).text());
+      }
+    }
   }
 
   renderList() {
@@ -83,8 +97,31 @@ class ListArticles extends React.Component {
 
   render() {
     return(
-      <div id="list-articles">  
-        {this.renderList()}
+      <div id="list-articles">
+        <div className="topics-menu">
+          <div onClick={this.onTopicSelect} className="topics-scroll"> 
+            <span className="topic-menu topic-select">All</span>
+            <span className="topic-menu">Programming</span>
+            <span className="topic-menu">Culture</span>
+            <span className="topic-menu">Science</span>
+            <span className="topic-menu">Art</span>
+            <span className="topic-menu">Medicine</span>
+            <span className="topic-menu">Language</span>
+            <span className="topic-menu">Smart</span>
+            <span className="topic-menu">Scycology</span>
+            <span className="topic-menu">Tv</span>
+            <span className="topic-menu">Life</span>
+            <span className="topic-menu">Animals</span>
+            <span className="topic-menu">Murder</span>
+            <span className="topic-menu">Fiction</span>
+            <span className="topic-menu">WallStreet</span>
+            <span className="topic-menu">Music</span>
+            <span className="topic-menu">Politics</span>
+          </div>
+        </div>  
+        <div className="article-items">
+          {this.renderList()}
+        </div>
       </div>
     );
   }
@@ -97,22 +134,5 @@ const mapStateToProps = (state) => {
 
 
 export default connect( mapStateToProps, {
-  listArticles
+  listArticles, listArticlesOnTopic
 } )(ListArticles);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

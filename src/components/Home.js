@@ -9,7 +9,7 @@ class Home extends React.Component {
 
 
   componentDidMount() {
-    setInterval(() => this.changeSlide(), 5000);  
+    this.slideInterval = setInterval(() => this.changeSlide(), 5000);  
     $("#writeEdit-indicator").css("margin-left", "-100px");
   }
 
@@ -52,6 +52,10 @@ class Home extends React.Component {
     $(activeSlide).removeClass("slide-active");
     $(slides[activeIndex]).addClass("slide-active");
 
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.slideInterval);
   }
 
 

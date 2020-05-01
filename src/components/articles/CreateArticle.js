@@ -8,8 +8,10 @@ import { createArticle } from "../../actions";
 class CreateArticle extends React.Component {
 
   componentDidMount() {
-    $("#writeEdit-indicator").text("Write");
-    $("#writeEdit-indicator").css("margin-left", "0px");
+    $(function() {
+      $("#writeEdit-indicator").text("Write");
+      $("#writeEdit-indicator").css("margin-left", "0px");
+    });
   }
 
   onFormSubmit = (formValues) => {

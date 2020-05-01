@@ -119,7 +119,7 @@
 }
 
 .select-from-topics {
-  background: var(--black-color);
+  background-color: var(--black-color);
   color: var(--pure-white);
   padding: 9px;
   font-family: 'Roboto Slab', serif;

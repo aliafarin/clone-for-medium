@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import $ from "jquery";
 
+import "../../Styles/index.css";
 import Loading from "../Loading";
 import { listArticles, listArticlesOnTopic } from "../../actions";
 
@@ -25,7 +26,8 @@ class ListArticles extends React.Component {
 
   //fade the deleted article message
   fadeDeletedMessage = () => {
-    setTimeout( () => $(".deletedA-m").css("display", "none"), 300000 );
+    $(".deletedA-m").css("opacity", "0");
+    setTimeout( () => $(".deletedA-m").css("display", "none"), 5000 );
   }
 
   //get appropriate articles on topic select
@@ -53,8 +55,7 @@ class ListArticles extends React.Component {
           {this.fadeDeletedMessage()}
           return(
             <div className="deletedA-m">
-              <h2>The Article has been Deleted</h2>
-              <i class="red large trash alternate icon"></i>
+              <i className="red large trash alternate icon"></i>
             </div>
             );
         }
@@ -100,6 +101,7 @@ class ListArticles extends React.Component {
           <div onClick={this.onTopicSelect} className="topics-scroll"> 
             <span className="topic-menu topic-select">All</span>
             <span className="topic-menu">Programming</span>
+            <span className="topic-menu">Other</span>
             <span className="topic-menu">Culture</span>
             <span className="topic-menu">Science</span>
             <span className="topic-menu">Art</span>

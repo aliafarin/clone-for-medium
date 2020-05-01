@@ -8,8 +8,10 @@ const NavBar = () => {
 
 
   let navDown = () => {
-    $(".nav").toggleClass("nav-down");
-    $(".bars-icon").toggleClass("bars-icon-down");
+    $(function() {
+      $(".nav").toggleClass("nav-down");
+      $(".bars-icon").toggleClass("bars-icon-down");
+    })
   }
 
   return(

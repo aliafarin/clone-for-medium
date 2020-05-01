@@ -11,7 +11,9 @@ import Loading from "../Loading";
 class DisplayArticle extends React.Component {
 
   componentDidMount() {
-    $("#writeEdit-indicator").css("margin-left", "-100px");
+    $(function() {
+      $("#writeEdit-indicator").css("margin-left", "-100px");
+    });
     this.id = this.props.params.id;
     this.props.fetchArticle(this.id);
   }
@@ -40,28 +42,30 @@ class DisplayArticle extends React.Component {
   //progress bar functionality
   onProgress = () => {
 
-    let articleContent = document.getElementsByClassName("articleD-content")[0];
-    let coords = articleContent.getBoundingClientRect();
-    let top = coords.y;
-    let articleHeight = coords.height;
-    let windowHeight = document.documentElement.clientHeight;
-
-    //show progress bar when window reaches article content
-    if( (windowHeight + window.pageYOffset) > top ) {
-      $("progress").css("display", "block");
-      let currentProgress =  Math.floor((windowHeight - top) / articleHeight * 100);
-      $("progress").val(currentProgress);
-    }
-
-    //hide progress bar when window go back to the beginning of page 
-    else if( (windowHeight + window.pageYOffset) <= top) {
-      $("progress").css("display", "none");
-    }
-
-    //hide progress bar when window passes article content
-    if( windowHeight - coords.bottom - 200 > 0 ) {
-      $("progress").css("display", "none");
-    }
+    $(function() {
+      let articleContent = document.getElementsByClassName("articleD-content")[0];
+      let coords = articleContent.getBoundingClientRect();
+      let top = coords.y;
+      let articleHeight = coords.height;
+      let windowHeight = document.documentElement.clientHeight;
+  
+      //show progress bar when window reaches article content
+      if( (windowHeight + window.pageYOffset) > top ) {
+        $("progress").css("display", "block");
+        let currentProgress =  Math.floor((windowHeight - top) / articleHeight * 100);
+        $("progress").val(currentProgress);
+      }
+  
+      //hide progress bar when window go back to the beginning of page 
+      else if( (windowHeight + window.pageYOffset) <= top) {
+        $("progress").css("display", "none");
+      }
+  
+      //hide progress bar when window passes article content
+      if( windowHeight - coords.bottom - 200 > 0 ) {
+        $("progress").css("display", "none");
+      }
+    });
   
   }
 

@@ -105,7 +105,7 @@ class DisplayArticle extends React.Component {
               </div>
             </div>
             <div className="articleD-image">
-              <img src={require("./kristine-weilert-tLNRTxieD7k-unsplash.jpg")} />
+              <img src={article.image} />
               <p>Some Photo Taken a Long Time Ago</p>
             </div>
             <div className="articleD-content">

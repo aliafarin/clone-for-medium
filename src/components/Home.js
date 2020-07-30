@@ -3,6 +3,7 @@ import $ from "jquery";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
+import { topics } from '../Topics';
 class Home extends React.Component {
 
   state = { interests: [] };
@@ -58,6 +59,13 @@ class Home extends React.Component {
     clearInterval(this.slideInterval);
   }
 
+  renderTopics = () => {
+    return topics.map((topic) => {
+      return(
+        <span className="interest"><i className="slack hash icon"></i>{topic}</span>
+      );
+    });
+  }
 
   render() {
     
@@ -66,25 +74,7 @@ class Home extends React.Component {
         <div className="home-interests" >
           <h1>Get Smarter About What Matters to You</h1>
           <div id="interests" onClick={this.selectInterest}> 
-            <span className="interest"><i className="slack hash icon"></i>Programming</span>
-            <span className="interest"><i className="slack hash icon"></i>Culture</span>
-            <span className="interest"><i className="slack hash icon"></i>language</span>
-            <span className="interest"><i className="slack hash icon"></i>Music</span>
-            <span className="interest"><i className="slack hash icon"></i>Politics</span>
-            <span className="interest"><i className="slack hash icon"></i>Science</span>
-            <span className="interest"><i className="slack hash icon"></i>Business</span>
-            <span className="interest"><i className="slack hash icon"></i>Android</span>
-            <span className="interest"><i className="slack hash icon"></i>WallStreet</span>
-            <span className="interest"><i className="slack hash icon"></i>Smart Phones</span>
-            <span className="interest"><i className="slack hash icon"></i>Fiction</span>
-            <span className="interest"><i className="slack hash icon"></i>Romance</span>
-            <span className="interest"><i className="slack hash icon"></i>Social Issues</span>
-            <span className="interest"><i className="slack hash icon"></i>Murder</span>
-            <span className="interest"><i className="slack hash icon"></i>Movies</span>
-            <span className="interest"><i className="slack hash icon"></i>Tv Shows</span>
-            <span className="interest"><i className="slack hash icon"></i>Life</span>
-            <span className="interest"><i className="slack hash icon"></i>Animals</span>
-            <span className="interest"><i className="slack hash icon"></i>Celebrities</span>
+            {this.renderTopics()}
           </div>
 
           <div className="get-started">

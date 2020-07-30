@@ -73,12 +73,13 @@
 
 .topics-menu {
   position: fixed;
-  top: 110px;
-  bottom: 160px;
+  top: 60px;
   right: 0;
   width: 250px;
+  height: 100%;
+  background-color: rgb(247, 247, 247);
   border: solid 0.5px rgba(0, 0, 0, 0.64);
-  border-radius: 1rem 0 0 1rem;
+  border-radius: 0.3rem 0 0 0.3rem;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.24);
   overflow: hidden;
 }
@@ -87,15 +88,28 @@
   overflow-y: scroll;
   overflow-x: hidden;
   height: 100%;
+  padding-bottom: 100px;
+}
+
+.topics-scroll::-webkit-scrollbar {
+  width: 12px;
+}
+
+.topics-scroll::-webkit-scrollbar-track {
+  background: var(gray);
+}
+
+.topics-scroll::-webkit-scrollbar-thumb {
+  background: var(--black-color);
+}
+
+.topic-menu {
+  font-size: 20px !important;
 }
 
 .topic-menu:first-child {
   font-size: 1.2rem;
   color: var(--nice-green);
-}
-
-.topics-scroll::-webkit-scrollbar {
-  width: 5px;
 }
 
 .topic-menu {
@@ -116,8 +130,8 @@
 }
 
 .topic-select {
-  color: var(--black-color);
-  border-bottom: solid 4px var(--black-color);
+  color: var(--nice-green);
+  border-bottom: solid 4px var(--nice-green) !important;
   transform: scale(1.2);
 }
 
@@ -166,9 +180,11 @@
 
   .topics-scroll {
     display: flex;
+    align-items: center;
     overflow-x: scroll;
     overflow-y: hidden;
     padding-left: 15px;
+    padding-bottom: 0;
   }
 
   ::-webkit-scrollbar {
@@ -186,6 +202,7 @@
 
   .topics-menu {
     display: flex;
+    align-items: center;
     top: 57px;
     left: 0;
     right: 0;
@@ -194,7 +211,6 @@
     height: 40px;
     border: none;
     border-radius: 0;
-    background-color: var(--pure-white);
     box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.74);
   }
 
@@ -205,11 +221,11 @@
     font-size: 1rem;
   }
 
+  .topic-menu:hover {
+    color: var(--nice-green);
+  }
+
   .topic-select {
-    color: #004d00;
-    border: none;
-    border-bottom: solid 5px #004d00;
-    border-radius: 0.3rem;
     transform: scale(1.1);
   }
 
@@ -250,25 +266,3 @@
   }
 }
 
-.deletedA-m {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  text-align: center;
-  padding: 8px;
-  background-color: rgba(0, 0, 0, 0.74);
-  transition: all 5s ease;
-}
-
-.deletedA-m h2 {
-  display: inline;
-  font-size: 1.5rem;
-  padding: 10px;
-  color: var(--delete-color);
-}
-
-.deletedA-m i {
-  padding-bottom: 28px;
-}

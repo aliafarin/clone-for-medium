@@ -12,10 +12,7 @@ import DisplayArticle from './articles/DisplayArticle';
 import CreateArticle from './articles/CreateArticle';
 import EditArticle from './articles/EditArticle';
 import DeleteArticle from './articles/DeleteArticle';
-
 import Footer from './Footer';
-
-
 
 class App extends React.Component {
 

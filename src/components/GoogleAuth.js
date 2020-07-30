@@ -59,7 +59,12 @@ class GoogleAuth extends React.Component {
       );
     }
     else {
-      return null;
+      return(
+        <div>
+          <span style={{color: "rgba(2, 158, 116)"}} onClick={this.displayModal}>Sign in</span>
+          <Modal signIn={this.signIn} />
+        </div>
+      );
     }
   }
 

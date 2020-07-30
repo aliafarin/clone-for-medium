@@ -1,8 +1,9 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
+import { Link } from "react-router-dom";
 
 import EditorFieldComponent from "./EditorFieldComponent";
-import { Link } from "react-router-dom";
+import { topics } from '../Topics';
 
 class Form extends React.Component {
 
@@ -28,7 +29,8 @@ class Form extends React.Component {
   imageComponent = (formProps) => {
     return(
       <div className="article-image">
-        <span><i className="large camera icon"></i></span><input type="url" {...formProps.input} placeholder="image url ..." />
+        <span><i className="large camera icon"></i></span>
+        <input type="url" {...formProps.input} placeholder="image url ..." required />
       </div>
     );
   }
@@ -62,29 +64,23 @@ class Form extends React.Component {
     );
   }
 
+  renderTopics = () => {
+    return topics.map((topic) => {
+      return(
+        <option value={topic}>{topic}</option>
+      );
+    });
+  }
+
   render() {
     return (
       <div className="editor-form">
         <form onSubmit={this.props.handleSubmit(this.onSubmit)} autoComplete="off">
           <div className="g-container">
             <Field name="title" className="form-input" type="text" placeholder="Title" component={this.inputComponent} />
-            <Field name="topic" className="select-from-topics" required component="select">
+            <Field name="topic" className="select-css" required component="select">
               <option value="">Choose a Topic</option>
-              <option value="Science">Science</option>
-              <option value="Programming">Programming</option>
-              <option value="Culture">Culture</option>
-              <option value="Language">Language</option>
-              <option value="Music">Music</option>
-              <option value="Politics">Politics</option>
-              <option value="Business">Business</option>
-              <option value="Android">Android</option>
-              <option value="WallStreet">WallStreet</option>
-              <option value="Smart Phones">Smart Phones</option>
-              <option value="Fiction">Fiction</option>
-              <option value="Romance">Romance</option>
-              <option value="Social">Social</option>
-              <option value="Tv">Tv</option>
-              <option value="Other">Other-</option>
+              {this.renderTopics()}
             </Field>
             <Field name="description" className="desc" type="text" placeholder="What is your article about ?" component={this.inputComponent} />
           </div>

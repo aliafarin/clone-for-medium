@@ -6,6 +6,7 @@ import $ from "jquery";
 import "../../Styles/index.css";
 import Loading from "../Loading";
 import { listArticles, listArticlesOnTopic } from "../../actions";
+import { topics } from '../../Topics';
 
 class ListArticles extends React.Component {
 
@@ -22,12 +23,6 @@ class ListArticles extends React.Component {
 
   onMouseLeaveArticle = () => {
     $(".dark-overlay").css("opacity", "0");
-  }
-
-  //fade the deleted article message
-  fadeDeletedMessage = () => {
-    $(".deletedA-m").css("opacity", "0");
-    setTimeout( () => $(".deletedA-m").css("display", "none"), 5000 );
   }
 
   //get appropriate articles on topic select
@@ -52,12 +47,7 @@ class ListArticles extends React.Component {
       this.props.articles.sort((a, b) => b.id - a.id);
       return this.props.articles.map((article) => {
         if(!article) {
-          {this.fadeDeletedMessage()}
-          return(
-            <div className="deletedA-m">
-              <i className="red large trash alternate icon"></i>
-            </div>
-            );
+          return null;
         }
         return(
           <div 
@@ -79,7 +69,7 @@ class ListArticles extends React.Component {
                   <div className="article-date"><p>{article.publishedAt}</p></div>
                 </div>
               </Link>
-              <div className="article-img"><img src={require("./kristine-weilert-tLNRTxieD7k-unsplash.jpg")} /></div>
+              <div className="article-img"><img src={article.image} /></div>
           </div>
         );
       });
@@ -94,29 +84,21 @@ class ListArticles extends React.Component {
     }
   }
 
+  renderTopics = () => {
+    return topics.map((topic) => {
+      return(
+        <span className="topic-menu">{topic}</span>
+      );
+    });
+  }
+
   render() {
     return(
       <div id="list-articles">
         <div className="topics-menu">
           <div onClick={this.onTopicSelect} className="topics-scroll"> 
             <span className="topic-menu topic-select">All</span>
-            <span className="topic-menu">Programming</span>
-            <span className="topic-menu">Other</span>
-            <span className="topic-menu">Culture</span>
-            <span className="topic-menu">Science</span>
-            <span className="topic-menu">Art</span>
-            <span className="topic-menu">Medicine</span>
-            <span className="topic-menu">Language</span>
-            <span className="topic-menu">Smart</span>
-            <span className="topic-menu">Scycology</span>
-            <span className="topic-menu">Tv</span>
-            <span className="topic-menu">Life</span>
-            <span className="topic-menu">Animals</span>
-            <span className="topic-menu">Murder</span>
-            <span className="topic-menu">Fiction</span>
-            <span className="topic-menu">WallStreet</span>
-            <span className="topic-menu">Music</span>
-            <span className="topic-menu">Politics</span>
+            {this.renderTopics()}
           </div>
         </div>  
         <div className="article-items">
